@@ -1,0 +1,318 @@
+format compact
+% Joseph A. Boyle
+% 3524
+% Section C2
+% Math 250 MATLAB Assignment #1
+rand('seed', 3524)
+% Question 1 (a)
+R = rand(2, 3)
+R =
+    0.4911    0.7933    0.2568
+    0.7447    0.9412    0.3448
+R = rand(2, 3)
+R =
+    0.6721    0.2472    0.1379
+    0.1704    0.5064    0.0721
+R = rand(2, 3)
+R =
+    0.7080    0.8811    0.8269
+    0.6524    0.9113    0.3603
+% Question 1 (b)
+A = [1 2; 3 4; 5 6]
+A =
+     1     2
+     3     4
+     5     6
+B = [1 2 3; 4 5 6; 7 8 9]
+B =
+     1     2     3
+     4     5     6
+     7     8     9
+x = [4 3 2]
+x =
+     4     3     2
+X = [1;2;3]
+X =
+     1
+     2
+     3
+% Question 1 (c)
+[size(A); size(B); size(X); size(x)]
+ans =
+     3     2
+     3     3
+     3     1
+     1     3
+S = ans
+S =
+     3     2
+     3     3
+     3     1
+     1     3
+% Question 1 (d)
+a32 = A(3,2)
+a32 =
+     6
+A(3,2) = 7
+A =
+     1     2
+     3     4
+     5     7
+A(3,2) = 6
+A =
+     1     2
+     3     4
+     5     6
+% Question 1 (e)
+C(:,1) = B(:,1); C(:,2) = B(:,3)
+C =
+     1     3
+     4     6
+     7     9
+D(1,:) = B(1, :); D(2, :) = B(3,:)
+D =
+     1     2     3
+     7     8     9
+C,D
+C =
+     1     3
+     4     6
+     7     9
+D =
+     1     2     3
+     7     8     9
+
+% Question 2 (a)
+% [AX], [BC]
+[A X]
+ans =
+     1     2     1
+     3     4     2
+     5     6     3
+[B C]
+ans =
+     1     2     3     1     3
+     4     5     6     4     6
+     7     8     9     7     9
+[C D]
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('horzcat')" style="font-weight:bold">horzcat</a>
+Dimensions of matrices being concatenated are not consistent.} 
+[C; B]
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('vertcat')" style="font-weight:bold">vertcat</a>
+Dimensions of matrices being concatenated are not consistent.} 
+[B; D]
+ans =
+     1     2     3
+     4     5     6
+     7     8     9
+     1     2     3
+     7     8     9
+% Question 2 (b)
+eye(4)
+ans =
+     1     0     0     0
+     0     1     0     0
+     0     0     1     0
+     0     0     0     1
+zeros(3)
+ans =
+     0     0     0
+     0     0     0
+     0     0     0
+zeros(3, 5)
+ans =
+     0     0     0     0     0
+     0     0     0     0     0
+     0     0     0     0     0
+ones(2, 3)
+ans =
+     1     1     1
+     1     1     1
+diag([4 5 6 7])
+ans =
+     4     0     0     0
+     0     5     0     0
+     0     0     6     0
+     0     0     0     7
+% Question 3 (a)
+format short
+format compact
+u = fix(10*rand(3,1)), v = fix(10*rand(3,1)), A = fix(10*rand(2,3)), B = fix(10*rand(2,3))
+u =
+     9
+     8
+     5
+v =
+     7
+     5
+     4
+A =
+     1     0     8
+     5     4     2
+B =
+     6     7     0
+     4     5     6
+A+B
+ans =
+     7     7     8
+     9     9     8
+B+A
+ans =
+     7     7     8
+     9     9     8
+6*B
+ans =
+    36    42     0
+    24    30    36
+2*(3*B)
+ans =
+    36    42     0
+    24    30    36
+(6*A)+(15*B)
+ans =
+    96   105    48
+    90    99   102
+3*((2*A) + (5*B))
+ans =
+    96   105    48
+    90    99   102
+3*A
+ans =
+     3     0    24
+    15    12     6
+(3*A')'
+ans =
+     3     0    24
+    15    12     6
+% Addition is the same regardless of adding A to B or B to A (that is, A+B = B+A).
+% Multiplying by scalar quantities is distributive (that is, a*(b*C) == a*b*C == b*(a*C)
+% Essentially, matrix addition/multiplication follows rules similar to algebraic math: a*(B+C) == a*B + a*C.
+% Question 4 (a)
+A = fix(10*rand(3,4))
+A =
+     8     9     2     9
+     9     6     5     1
+     1     0     9     9
+A = fix(10*rand(3,4))
+A =
+     4     9     6     5
+     7     2     1     1
+     7     3     2     0
+R=A
+R =
+     4     9     6     5
+     7     2     1     1
+     7     3     2     0
+R(1,:) = R(1,:)/R(1,1)
+R =
+    1.0000    2.2500    1.5000    1.2500
+    7.0000    2.0000    1.0000    1.0000
+    7.0000    3.0000    2.0000         0
+R(2,:) = R(2,:) - R(2,1)*R(1,:)
+R =
+    1.0000    2.2500    1.5000    1.2500
+         0  -13.7500   -9.5000   -7.7500
+    7.0000    3.0000    2.0000         0
+R(3,:) = R(3,:) - R(3,1)*R(1,:)
+R =
+    1.0000    2.2500    1.5000    1.2500
+         0  -13.7500   -9.5000   -7.7500
+         0  -12.7500   -8.5000   -8.7500
+% Question 4 (b)
+R(2,:) = R(2,:) / R(2, 2)
+R =
+    1.0000    2.2500    1.5000    1.2500
+         0    1.0000    0.6909    0.5636
+         0  -12.7500   -8.5000   -8.7500
+R(1,:) = R(1,:) - R(1,2)*R(2,:)
+R =
+    1.0000         0   -0.0545   -0.0182
+         0    1.0000    0.6909    0.5636
+         0  -12.7500   -8.5000   -8.7500
+R(3,:) = R(3,:) - R(3,2)*R(2,:)
+R =
+    1.0000         0   -0.0545   -0.0182
+         0    1.0000    0.6909    0.5636
+         0         0    0.3091   -1.5636
+% Question 4 (c)
+R(3,:) = R(3,:) / R(3, 3)
+R =
+    1.0000         0   -0.0545   -0.0182
+         0    1.0000    0.6909    0.5636
+         0         0    1.0000   -5.0588
+R(1,:) = R(1,:) - R(1,3)*R(3,:)
+R =
+    1.0000         0         0   -0.2941
+         0    1.0000    0.6909    0.5636
+         0         0    1.0000   -5.0588
+R(2,:) = R(2,:) - R(2,3)*R(3,:)
+R =
+    1.0000         0         0   -0.2941
+         0    1.0000         0    4.0588
+         0         0    1.0000   -5.0588
+% Question 4 (d)
+rref(A)
+ans =
+    1.0000         0         0   -0.2941
+         0    1.0000         0    4.0588
+         0         0    1.0000   -5.0588
+% Question 5 (a)
+a = {0.10, 0.15, 0.30}
+a = 
+    [0.1000]    [0.1500]    [0.3000]
+a = [0.10;0.15;0.30;]
+a =
+    0.1000
+    0.1500
+    0.3000
+m = [0.20;0.25;0.10]
+m =
+    0.2000
+    0.2500
+    0.1000
+s = [0.20;0.35;0.10]
+s =
+    0.2000
+    0.3500
+    0.1000
+C = [a, m, s]
+C =
+    0.1000    0.2000    0.2000
+    0.1500    0.2500    0.3500
+    0.3000    0.1000    0.1000
+% Question 5 (b)
+x = [40;50;30]
+x =
+    40
+    50
+    30
+C*x
+ans =
+    20
+    29
+    20
+% Agriculture accounted for $20 million in surplus, Manufacturing $29 million, and Services $20 million.
+% Question 5 (c)
+d = [90;72;96]
+d =
+    90
+    72
+    96
+% (I3 - C)x = d
+% (eye(3) - C) * x = d
+eye(3) - C
+ans =
+    0.9000   -0.2000   -0.2000
+   -0.1500    0.7500   -0.3500
+   -0.3000   -0.1000    0.9000
+[ans d]
+ans =
+    0.9000   -0.2000   -0.2000   90.0000
+   -0.1500    0.7500   -0.3500   72.0000
+   -0.3000   -0.1000    0.9000   96.0000
+rref(ans)
+ans =
+    1.0000         0         0  194.0000
+         0    1.0000         0  226.5000
+         0         0    1.0000  196.5000
+% Gross production needed: $194 million, $226.5 million, $196.5 million from Agriculture, Manufacturing, and Services respectively.
