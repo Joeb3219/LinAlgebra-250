@@ -83,7 +83,7 @@ D =
      7     8     9
 
 % Question 2 (a)
-% [AX], [BC]
+% [A X], [B C], [B; D]
 [A X]
 ans =
      1     2     1
@@ -95,11 +95,9 @@ ans =
      4     5     6     4     6
      7     8     9     7     9
 [C D]
-{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('horzcat')" style="font-weight:bold">horzcat</a>
-Dimensions of matrices being concatenated are not consistent.} 
+% Produces error, suppressed.
 [C; B]
-{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('vertcat')" style="font-weight:bold">vertcat</a>
-Dimensions of matrices being concatenated are not consistent.} 
+% Produces error, suppressed.
 [B; D]
 ans =
      1     2     3
