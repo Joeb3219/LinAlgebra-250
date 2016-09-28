@@ -1,0 +1,157 @@
+% Joseph A. Boyle
+% 3524
+% Section C2
+% Math 250 Lab Assignment #2
+format compact
+format short
+rand('seed', 3524);
+% Question 1 (a)
+A = rmat(3, 5), rank(A(:,1:3))
+A =
+     4     9     6     5     7
+     7     2     1     1     6
+     7     3     2     0     8
+ans =
+     3
+b = rvect(3), R = rref([A b])
+b =
+     9
+     8
+     3
+R =
+    1.0000         0         0   -0.2941    1.0000         0
+         0    1.0000         0    4.0588   -3.0000   13.0000
+         0         0    1.0000   -5.0588    5.0000  -18.0000
+S = R(:,1:5)
+S =
+    1.0000         0         0   -0.2941    1.0000
+         0    1.0000         0    4.0588   -3.0000
+         0         0    1.0000   -5.0588    5.0000
+rref(A)
+ans =
+    1.0000         0         0   -0.2941    1.0000
+         0    1.0000         0    4.0588   -3.0000
+         0         0    1.0000   -5.0588    5.0000
+% Columns 1, 2, and 3 are pivot columns, as they contain they all contain leading entries.
+rank(R)
+ans =
+     3
+rank(A)
+ans =
+     3
+% ii. rk(R) = rk(A) = 3. They are equivalent because R is the rref([A|B]), and the rank(A) is 3. Thus, the first 3 pivot columns will appear in A, therefore rk(A) = rk([A|B])
+nullity(A)
+{Undefined function or variable 'nullity'.} 
+null(A)
+ans =
+   -0.2078   -0.3818
+   -0.6913    0.0847
+    0.4461   -0.7108
+    0.4139    0.3339
+    0.3295    0.4800
+% remove the last two functions ^^
+% iii. nullity(A) = 2, as n = 5 and rk(A) = 3: nullity(A) = n - rk(A) = 2. x4 and x5 are free variables.
+S
+S =
+    1.0000         0         0   -0.2941    1.0000
+         0    1.0000         0    4.0588   -3.0000
+         0         0    1.0000   -5.0588    5.0000
+% iv. Ax=b has a solution because it is consistent - rref(A) has no row i such that b(i,1) is not zero. 
+% iv. Consistent systems always have at least one solution. This system has infinite solutions since nullity(A) > 0.
+% Question 1 (b)
+c = R(:,6)
+c =
+     0
+    13
+   -18
+x = [c; 0; 0]
+x =
+     0
+    13
+   -18
+     0
+     0
+% i.
+(A*x) - b
+ans =
+     0
+     0
+     0
+(S*x) - c
+ans =
+     0
+     0
+     0
+% remove below this line
+A, x, b
+A =
+     4     9     6     5     7
+     7     2     1     1     6
+     7     3     2     0     8
+x =
+     0
+    13
+   -18
+     0
+     0
+b =
+     9
+     8
+     3
+A*x
+ans =
+     9
+     8
+     3
+S,x,b
+S =
+    1.0000         0         0   -0.2941    1.0000
+         0    1.0000         0    4.0588   -3.0000
+         0         0    1.0000   -5.0588    5.0000
+x =
+     0
+    13
+   -18
+     0
+     0
+b =
+     9
+     8
+     3
+(S*x)
+ans =
+     0
+    13
+   -18
+c
+c =
+     0
+    13
+   -18
+% remove things above this line ^
+% DO THIS ONE(ii) Use properties of row reduction to explain why the equations in(i)are true. (See pages 33 and 127 of the text.)
+% Question 1 (c)
+u = [-S(:,4); 1; 0], v = [-S(:,5);0;1]
+u =
+    0.2941
+   -4.0588
+    5.0588
+    1.0000
+         0
+v =
+    -1
+     3
+    -5
+     0
+     1
+A
+A =
+     4     9     6     5     7
+     7     2     1     1     6
+     7     3     2     0     8
+S
+S =
+    1.0000         0         0   -0.2941    1.0000
+         0    1.0000         0    4.0588   -3.0000
+         0         0    1.0000   -5.0588    5.0000
+diary off
