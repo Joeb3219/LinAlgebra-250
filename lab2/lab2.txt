@@ -305,3 +305,105 @@ ans =
 % Since Ay = 0, the equation is equivalent to Ax=b
 % Since x is a solution to the system, Ax - b will yield zero as Ax is equal to b.
 diary off
+% Question 3
+A = rmat(2,3), B = rmat(3, 4), C = rmat(4,3), v = rvect(4)
+{Undefined function or variable 'x'.
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('rmat', 'C:\Users\joeb3219\Documents\MATLAB\LinAlgebra-250\lab2\rmat.m', 2)" style="font-weight:bold">rmat</a> (<a href="matlab: opentoline('C:\Users\joeb3219\Documents\MATLAB\LinAlgebra-250\lab2\rmat.m',2,0)">line 2</a>)
+A = fix(10*rand(m,n));x} 
+% delete above this
+% Question 3
+A = rmat(2,3), B = rmat(3, 4), C = rmat(4,3), v = rvect(4)
+A =
+     6     7     6
+     2     0     3
+B =
+     0     4     8     6
+     3     3     7     2
+     2     4     9     6
+C =
+     9     9     8
+     4     2     1
+     4     6     7
+     3     9     7
+v =
+     0
+     1
+     7
+     6
+% Question 3 (a)
+u = B*v, A*u, D = A*B, D*v
+u =
+    96
+    64
+   103
+ans =
+        1642
+         501
+D =
+    33    69   151    86
+     6    20    43    30
+ans =
+        1642
+         501
+A*(B*C)
+ans =
+        1435        2115        1992
+         396         622         579
+(A*B)*C
+ans =
+        1435        2115        1992
+         396         622         579
+% Question 3 (b)
+A = [0 1; 0 0], B = [0 0; 1 0], C = [0 1; 1 0]
+A =
+     0     1
+     0     0
+B =
+     0     0
+     1     0
+C =
+     0     1
+     1     0
+A*B, B*A
+ans =
+     1     0
+     0     0
+ans =
+     0     0
+     0     1
+% i. A*B is not equal to B*A
+(A+B)*(A+B)
+ans =
+     1     0
+     0     1
+(A*A) + 2
+ans =
+     2     2
+     2     2
+% remove the last command
+(A*A) + 2*(A*B) + (B*B)
+ans =
+     2     0
+     0     0
+% (A+B)^2 is not equal to A^2 + 2AB + B^2
+A*A
+ans =
+     0     0
+     0     0
+% ii. If A were a number, A^2 being zero would imply that A is zero, which is not the case for this matrix.
+[0 0; 0 0]*[0 0; 0 0]
+ans =
+     0     0
+     0     0
+% ii. For a given k, there is a unique j such that (sqrt(k) = j). This is not the case for matrices, as ([0 0; 0 0])^2 = ([0 1; 0 0])^2
+A*C
+ans =
+     1     0
+     0     0
+A*B
+ans =
+     1     0
+     0     0
+% iii. From this calculation, we would assume that B equals C if we were talking about numbers.
+% iii. This conclusion doesn't hold true for matrices, as B and C are not equal.
+diary off
