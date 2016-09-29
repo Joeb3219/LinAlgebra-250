@@ -407,3 +407,81 @@ ans =
 % iii. From this calculation, we would assume that B equals C if we were talking about numbers.
 % iii. This conclusion doesn't hold true for matrices, as B and C are not equal.
 diary off
+% Question 4
+A = [0 0 0 1 0 1;1 0 1 1 0 0;0 1 0 1 0 0; 1 1 1 0 0 1; 0 0 1 1 0 0]
+A =
+     0     0     0     1     0     1
+     1     0     1     1     0     0
+     0     1     0     1     0     0
+     1     1     1     0     0     1
+     0     0     1     1     0     0
+A = [0 0 0 1 0 1;1 0 1 1 0 0;0 1 0 1 0 0;1 0 1 0 0 0; 1 1 1 0 0 1; 0 0 1 1 0 0]
+A =
+     0     0     0     1     0     1
+     1     0     1     1     0     0
+     0     1     0     1     0     0
+     1     0     1     0     0     0
+     1     1     1     0     0     1
+     0     0     1     1     0     0
+% complete i
+% ii. In 1 stage, person 1 can send a message 1 way
+A + (A*A)
+ans =
+     1     0     2     2     0     1
+     2     1     2     3     0     1
+     2     1     2     2     0     0
+     1     1     1     2     0     1
+     2     2     3     4     0     2
+     1     1     2     2     0     0
+% ii. In stage 2, person 1 can send a message 2 ways to person 4
+ans * (A*A*A)
+ans =
+    11     7    13    18     0     6
+    18    10    22    27     0     8
+    13     9    16    22     0     7
+    13     6    16    18     0     5
+    27    14    33    40     0    12
+    12     7    15    19     0     6
+% ii. In stage 3, person 1 can send a message 18 ways to person 4
+ans * (A*A*A*A)
+ans =
+   228   136   278   358     0   111
+   358   204   438   549     0   167
+   278   167   339   438     0   136
+   247   135   303   371     0   111
+   531   300   650   811     0   246
+   247   143   302   382     0   117
+% undo last several
+A + 
+{Error: "A" was previously used as a variable, conflicting with its use here as the name of a function or command.
+See <a href="matlab: helpview([docroot '/techdoc/matlab_prog/matlab_prog.map'],'function_call_command_syntax')">"How MATLAB Recognizes Command Syntax" in the MATLAB documentation</a> for details.} 
+A + (A*A) + (A*A*A)
+ans =
+     2     2     3     5     0     2
+     5     2     6     7     0     2
+     3     3     3     6     0     2
+     4     1     5     4     0     1
+     7     4     9     9     0     3
+     3     2     4     5     0     1
+% ii. In stage 3, person 1 can communicate 5 ways to person 4
+ans + (A*A*A*A)
+ans =
+     7     3     9    10     0     3
+    10     6    12    16     0     5
+     9     4    11    12     0     3
+     6     5     7    11     0     4
+    14    10    17    23     0     8
+     7     4     9    11     0     3
+% ii. In stage 4, person 1 can communicate 10 ways to person 4
+% everything about stages were for iii, not iv
+B = A + (A*A) + (A*A*A) + (A*A*A*A)
+B =
+     7     3     9    10     0     3
+    10     6    12    16     0     5
+     9     4    11    12     0     3
+     6     5     7    11     0     4
+    14    10    17    23     0     8
+     7     4     9    11     0     3
+% iv. Person 3 can send a message to person 4 12 ways in at most 4 stages
+% ii. Person 5 cannot receive a message from anybody else, as there is no 1's in the 5th column.
+diary off
