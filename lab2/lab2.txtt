@@ -1,0 +1,64 @@
+u1 = rvect(3), u2 = rvect(3), u3 = rvect(3), u4 = rvect(3)
+u1 =
+     5
+     4
+     1
+u2 =
+     5
+     0
+     4
+u3 =
+     8
+     2
+     6
+u4 =
+     4
+     7
+     5
+S = {u1,u2,u3}
+S = 
+    [3x1 double]    [3x1 double]    [3x1 double]
+A = [u1 u2 u3], rref(A)
+A =
+     5     5     8
+     4     0     2
+     1     4     6
+ans =
+     1     0     0
+     0     1     0
+     0     0     1
+% insert Question 2(a) above previous command
+% i. There are 0 free variables.
+% ii. S is linearly independent because there are no free variables, and the rank(A) = n. The result of rref(A) is an Identity matrix.
+B = [u1 u2 u3 u4], rref(B)
+B =
+     5     5     8     4
+     4     0     2     7
+     1     4     6     5
+ans =
+    1.0000         0         0   -1.4545
+         0    1.0000         0   -8.0000
+         0         0    1.0000    6.4091
+% insert Question 2(b) above previous command
+% i. There is 1 free variable
+% ii. T is linearly dependent. We know this for two reasons: there is a free variable, and the smaller set, S, spans R^3 and is linearly independent.
+% u4 is a linear combination of the other 3 vectors.
+% delete below this line
+span(A)
+{Undefined function or variable 'span'.} 
+% delete above this line
+% Question 2 (c)
+v = rand(1)*u1 + rand(1)*u2
+v =
+    3.5331
+    0.2239
+    2.6586
+% The set {u1, u2, v} is linearly dependent because v is a linear combination of u and v.
+% correct last line: linear combination of u1 and u2
+rref([u1 u2 v])
+ans =
+    1.0000         0    0.0560
+         0    1.0000    0.6507
+         0         0         0
+% Since the rank(rref([u1 u2 v])) is not equal to n, this is linearly dependent.
+diary off
