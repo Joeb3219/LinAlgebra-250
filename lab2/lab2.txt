@@ -155,3 +155,153 @@ S =
          0    1.0000         0    4.0588   -3.0000
          0         0    1.0000   -5.0588    5.0000
 diary off
+% Viewing S, the rref(A), we can see that we have two free variables - x4 and x5.
+% When we model the equations in S, we find that we can represent x1, x2, and x3 in terms of x4 and x5.
+% To do so, x4 and x5 will become negative as we will move the basic variable to the other side of the equation and multiply by 1.
+% In effect, this looks like this for equation 1: x1 - 0.2941x4 + x5 = 0 -> x1 = .2941x4 - x5.
+% When representing the vector form, our vectors will be in terms of the free variables - x4 and x5.
+% Since everything ends up being multiplied by -1, the values of x4 and x5 in each equation is inversed, hence:
+% u=[-S(1,4);-S(2,4);-S(3,4);1;0];
+% v=[-S(1,5);-S(2,5);-S(3,5);0;1];
+
+s = rand(1), t = rand(1), y = s*u + t*v
+s =
+    0.9817
+t =
+    0.8221
+y =
+   -0.5334
+   -1.5180
+    0.8554
+    0.9817
+    0.8221
+Ay
+{Undefined function or variable 'Ay'.} 
+A*y
+ans =
+   1.0e-14 *
+    0.3553
+    0.0888
+    0.2665
+% delete below this line
+s = rand(1), t = rand(1), y = s*u + t*v
+s =
+    0.5370
+t =
+    0.7459
+y =
+   -0.5879
+    0.0581
+   -1.0129
+    0.5370
+    0.7459
+A*y
+ans =
+   1.0e-15 *
+    0.8882
+         0
+         0
+s = 0.9817, t = 0.8221
+s =
+    0.9817
+t =
+    0.8221
+y = s*u + t*v
+y =
+   -0.5334
+   -1.5182
+    0.8557
+    0.9817
+    0.8221
+% delete above this line
+% ii. Since A*u = 0, any scalar s times Au will yield zero also: sAu = s(Au) = s(0) = 0.
+% The same can be said about Av. Since Av = 0, given any scalar t, tAv = t(Av) = t(0) = 0.
+% Therefore, if y = (su + tv), Ay = A(su) + A(tv), which is equal to 0 + 0, therefore 0.
+A*y
+ans =
+   1.0e-14 *
+    0.2665
+    0.1776
+    0.1776
+% Question 1 (d)
+z = x + y
+z =
+   -0.5334
+   11.4818
+  -17.1443
+    0.9817
+    0.8221
+% delete below this line
+A,z,b
+A =
+     4     9     6     5     7
+     7     2     1     1     6
+     7     3     2     0     8
+z =
+   -0.5334
+   11.4818
+  -17.1443
+    0.9817
+    0.8221
+b =
+     9
+     8
+     3
+A*z - b
+ans =
+   1.0e-14 *
+   -0.3553
+         0
+    0.1776
+A,z,x,b,y
+A =
+     4     9     6     5     7
+     7     2     1     1     6
+     7     3     2     0     8
+z =
+   -0.5334
+   11.4818
+  -17.1443
+    0.9817
+    0.8221
+x =
+     0
+    13
+   -18
+     0
+     0
+b =
+     9
+     8
+     3
+y =
+   -0.5334
+   -1.5182
+    0.8557
+    0.9817
+    0.8221
+A,z,b
+A =
+     4     9     6     5     7
+     7     2     1     1     6
+     7     3     2     0     8
+z =
+   -0.5334
+   11.4818
+  -17.1443
+    0.9817
+    0.8221
+b =
+     9
+     8
+     3
+A*x - b
+ans =
+     0
+     0
+     0
+% delete above this
+% Az = b is equivalent to A(x+y)=b, which is equivalent to A(x)+A(y)=b.
+% Since Ay = 0, the equation is equivalent to Ax=b
+% Since x is a solution to the system, Ax - b will yield zero as Ax is equal to b.
+diary off
