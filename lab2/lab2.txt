@@ -32,7 +32,7 @@ ans =
     1.0000         0         0   -0.2941    1.0000
          0    1.0000         0    4.0588   -3.0000
          0         0    1.0000   -5.0588    5.0000
-% Columns 1, 2, and 3 are pivot columns, as they contain they all contain leading entries.
+% i. Columns 1, 2, and 3 are pivot columns, as they contain they all contain leading entries.
 rank(R)
 ans =
      3
@@ -46,7 +46,7 @@ S =
     1.0000         0         0   -0.2941    1.0000
          0    1.0000         0    4.0588   -3.0000
          0         0    1.0000   -5.0588    5.0000
-% iv. Ax=b has a solution because it is consistent - rref(A) has no row i such that b(i,1) is not zero. 
+% iv. Ax=b has a solution because it is consistent - rref(A) has no row i that is zero, yet b(i,1) is not zero. 
 % iv. Consistent systems always have at least one solution. This system has infinite solutions since nullity(A) > 0.
 % Question 1 (b)
 c = R(:,6)
@@ -61,7 +61,7 @@ x =
    -18
      0
      0
-% i.
+% i. (A*x) - b = (S*x) - c  = 0, as seen below:
 (A*x) - b
 ans =
      0
@@ -90,24 +90,27 @@ v =
     -5
      0
      1
-A
-A =
-     4     9     6     5     7
-     7     2     1     1     6
-     7     3     2     0     8
-S
-S =
-    1.0000         0         0   -0.2941    1.0000
-         0    1.0000         0    4.0588   -3.0000
-         0         0    1.0000   -5.0588    5.0000
-% Viewing S, the rref(A), we can see that we have two free variables - x4 and x5.
-% When we model the equations in S, we find that we can represent x1, x2, and x3 in terms of x4 and x5.
-% To do so, x4 and x5 will become negative as we will move the basic variable to the other side of the equation and multiply by 1.
-% In effect, this looks like this for equation 1: x1 - 0.2941x4 + x5 = 0 -> x1 = .2941x4 - x5.
-% When representing the vector form, our vectors will be in terms of the free variables - x4 and x5.
-% Since everything ends up being multiplied by -1, the values of x4 and x5 in each equation is inversed, hence:
-% u=[-S(1,4);-S(2,4);-S(3,4);1;0];
-% v=[-S(1,5);-S(2,5);-S(3,5);0;1];
+S*u
+ans = 
+	0
+	0
+	0
+S*v
+ans = 
+	0
+	0
+	0
+A*u
+ans = 
+	0
+	0
+	0
+A*v
+ans = 
+	0
+	0
+	0
+% i. See paper, attached.
 s = rand(1), t = rand(1), y = s*u + t*v
 s =
     0.9817
@@ -174,7 +177,7 @@ ans =
      0     0     1
 % i. There are 0 free variables.
 % ii. S is linearly independent because there are no free variables, and the rank(A) = n. The result of rref(A) is an Identity matrix.
-% insert Question 2(b) above previous command
+% Question 2 (b)
 B = [u1 u2 u3 u4], rref(B)
 B =
      5     5     8     4
@@ -193,8 +196,7 @@ v =
     3.5331
     0.2239
     2.6586
-% The set {u1, u2, v} is linearly dependent because v is a linear combination of u and v.
-% correct last line: linear combination of u1 and u2
+% The set {u1, u2, v} is linearly dependent because v is a linear combination of u1 and u2.
 rref([u1 u2 v])
 ans =
     1.0000         0    0.0560
