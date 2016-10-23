@@ -129,3 +129,81 @@ A =
     0.7447    0.2568    0.1704
     0.7933    0.3448    0.2472
 diary off
+% Question 2 (a)
+inv(L1)*inv(L2)
+ans =
+    1.0000         0         0
+    1.5165    1.0000         0
+    1.6154    1.0043    1.0000
+inv(L1*L2)
+ans =
+    1.0000         0         0
+    1.5165    1.0000   -0.0000
+    3.1383    1.0043    1.0000
+inv(L2*L1)
+ans =
+    1.0000         0         0
+    1.5165    1.0000   -0.0000
+    1.6154    1.0043    1.0000
+% delete above three commands
+% Since L is simply inv(L1)*inv(L2), L is equal to inv(L2*L1)
+L
+L =
+    1.0000         0         0
+    1.5165    1.0000         0
+    1.6154    1.0043    1.0000
+inv(L)
+ans =
+    1.0000         0         0
+   -1.5165    1.0000    0.0000
+   -0.0924   -1.0043    1.0000
+inv(inv(L2*L1))
+ans =
+    1.0000    0.0000    0.0000
+   -1.5165    1.0000    0.0000
+   -0.0924   -1.0043    1.0000
+L1*L2
+ans =
+    1.0000         0         0
+   -1.5165    1.0000         0
+   -1.6154   -1.0043    1.0000
+inv(L2*L1) = inv(L1)*inv(L2)
+{Subscript indices must either be real positive integers or logicals.} 
+L2*L1
+ans =
+    1.0000         0         0
+   -1.5165    1.0000         0
+   -0.0924   -1.0043    1.0000
+% delete everything since last comment
+% The inverse of an inverse matrix is simply the original matrix. Thus, inv(L) = inv(inv(L2*L1)) = L2 * L1.
+inv(L), inv(U)
+ans =
+    1.0000         0         0
+   -1.5165    1.0000    0.0000
+   -0.0924   -1.0043    1.0000
+ans =
+    2.0363    1.6373    1.5121
+         0   -0.8543  -51.8268
+         0    0.0000   71.4756
+% Question 2(b)
+b = rvect(3)
+b =
+     5
+     1
+     0
+c = inv(L) * b
+c =
+    5.0000
+   -6.5825
+   -1.4664
+x = inv(U) * c
+x =
+   -2.8133
+   81.6206
+ -104.8094
+A*x
+ans =
+    5.0000
+    1.0000
+   -0.0000
+diary off
