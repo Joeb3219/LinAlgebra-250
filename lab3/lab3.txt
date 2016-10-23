@@ -207,3 +207,30 @@ ans =
     1.0000
    -0.0000
 diary off
+% Question 3
+
+A = rand(500) ; b = rand(500,1); [L U] = lu(A);
+% Question 3 (a)
+tic; R = rref([A b]); y = R(:,501); toc
+Elapsed time is 5.119469 seconds.
+rreftime = elapsed_time
+{Undefined function or variable 'elapsed_time'.} 
+rreftime = 5.119469
+rreftime =
+    5.1195
+% Question 3 (b)
+tic; c = inv(L)*b; x = inv(U)*c; toc
+Elapsed time is 0.106065 seconds.
+lutime = 0.106065
+lutime =
+    0.1061
+norm(x-y)
+ans =
+   2.2070e-11
+% Question 3 (c)
+% i. ((2/3)*500^3) / (2*500^2) = 83333333.33 / 500000 = ~166.667
+rreftime / lutime
+ans =
+   48.2673
+% ii. 5.119469 / 0.106065 = 48.2673
+diary off
