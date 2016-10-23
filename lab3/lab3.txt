@@ -234,3 +234,216 @@ ans =
    48.2673
 % ii. 5.119469 / 0.106065 = 48.2673
 diary off
+% Question 4 (a)
+a = rmat(4,4)
+a =
+     6     0     8     5
+     5     1     6     2
+     0     0     5     8
+     8     4     6     3
+c = cofactor(a)
+c =
+  119.0000 -139.0000  -96.0000   60.0000
+ -156.0000  114.0000  192.0000 -120.0000
+  -50.0000   46.0000   30.0000   12.0000
+   39.0000   33.0000  -48.0000   30.0000
+a(1,1)*c(1,1) + a(1,2)*c(1,2) + a(1,3)*c(1,3) + a(1,4)*c(1,4)
+ans =
+   246
+a(2,1)*c(2,1) + a(2,2)*c(2,2) + a(2,3)*c(2,3) + a(2,4)*c(2,4)
+ans =
+   246
+a(1,3)*c(1,3) + a(2,3)*c(2,3) + a(3,3)*c(3,3) + a(4,3)*c(4,3)
+ans =
+   246
+a(1,4)*c(1,4) + a(2,4)*c(2,4) + a(3,4)*c(3,4) + a(4,4)*c(4,4)
+ans =
+   246
+
+% How do we prove this though, please do it joe
+det(a)
+ans =
+  246.0000
+% Question 4 (b)
+A = rmat(5,5), U = triu(A)
+A =
+     1     6     5     0     6
+     7     6     0     4     2
+     2     3     5     3     4
+     8     5     5     2     3
+     2     0     2     6     2
+U =
+     1     6     5     0     6
+     0     6     0     4     2
+     0     0     5     3     4
+     0     0     0     2     3
+     0     0     0     0     2
+A(1,1)*A(2,2)*A(3,3)*A(4,4)*A(5,5)
+ans =
+   120
+U(1,1)*U(2,2)*U(3,3)*U(4,4)*U(5,5)
+ans =
+   120
+% Since the det of a triangular matrix is the product of its diagonal, det(U) = 120 (the second calculation)
+det(U)
+ans =
+   120
+% delete above computation
+det(A)
+ans =
+  880.0000
+% delete above comp
+% The det(A) can be determined if we have the matrix A was multiplied by to yield U. 
+% We can multiply the determinant of that matrix by det(U) to yield det(A).
+% Question 4 (c)
+A = rmat(5,5)
+A =
+     2     6     8     3     2
+     8     9     5     1     2
+     5     0     7     3     3
+     3     5     2     0     8
+     0     3     4     4     0
+B = A; B(2,:) = A(1,:); B(1,:) = A(2,:)
+B =
+     8     9     5     1     2
+     2     6     8     3     2
+     5     0     7     3     3
+     3     5     2     0     8
+     0     3     4     4     0
+det(A), det(B)
+ans =
+        7525
+ans =
+       -7525
+% delete above computation
+% Since we performed a single row switch, det(B) will be -det(A) (likewise, det(A) = -det(B)).
+C = A; C(2,:) = A(2,:) + 10*A(1,:)
+C =
+     2     6     8     3     2
+    28    69    85    31    22
+     5     0     7     3     3
+     3     5     2     0     8
+     0     3     4     4     0
+det(A), det(C)
+ans =
+        7525
+ans =
+   7.5250e+03
+% delete above computation
+% add (ii.) to last comment
+% i, not ii.
+% ii. det(C) will be the same as det(A) since we added a multiple of one row to another.
+det(A), det(B), det(C)
+ans =
+        7525
+ans =
+       -7525
+ans =
+   7.5250e+03
+D = A; D(1,:) = 10*A(1,:)
+D =
+    20    60    80    30    20
+     8     9     5     1     2
+     5     0     7     3     3
+     3     5     2     0     8
+     0     3     4     4     0
+% iii. det(A) will be 10 times less than det(D). THat is, det(D) = 10*det(A) since we multiplied a row by 10.
+det(D)
+ans =
+       75250
+% Question 4 (d)
+A = rmat(5,5)
+A =
+     8     7     2     5     2
+     2     7     8     1     7
+     2     6     9     1     5
+     2     4     1     7     2
+     9     7     3     4     0
+A(1,1)=0; A(2,1) = 0
+A =
+     0     7     2     5     2
+     0     7     8     1     7
+     2     6     9     1     5
+     2     4     1     7     2
+     9     7     3     4     0
+[P, L, U, sign] = splu(A)
+P =
+     0     0     1     0     0
+     0     1     0     0     0
+     1     0     0     0     0
+     0     0     0     1     0
+     0     0     0     0     1
+L =
+    1.0000         0         0         0         0
+         0    1.0000         0         0         0
+         0    1.0000    1.0000         0         0
+    1.0000   -0.2857    0.9524    1.0000         0
+    4.5000   -2.8571    2.4405   -2.9904    1.0000
+U =
+    2.0000    6.0000    9.0000    1.0000    5.0000
+         0    7.0000    8.0000    1.0000    7.0000
+         0         0   -6.0000    4.0000   -5.0000
+         0         0         0    2.4762    3.7619
+         0         0         0         0   20.9519
+sign =
+    -1
+det(A)
+ans =
+   4.3580e+03
+det(P)
+ans =
+    -1
+% delete above two compuatation
+% i. det(P) will be -1. Since row 1 and 3 have been switched (1 row switch), det(P) will be det(Identity) * -1, ergo -1.
+det(L)
+ans =
+    1.0000
+% delete above comp
+% i. det(L) will be 1. Since it is upper triangular, its det will be the product of the diagonal. Ergo 1.
+det(L)
+ans =
+    1.0000
+% make last comment ii.
+det(A), det(U)
+ans =
+   4.3580e+03
+ans =
+  -4.3580e+03
+% delete last command
+% iii. det(A) will be -det(U). 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% iii. det(A) will be -det(U). PA=LU, det(PA)=det(LU). Since det(P) = -1 and det(L) = +1, it makes sense that det(A) will be equal to det(U) in magnitude, but differ by a negative.
+P*A
+ans =
+     2     6     9     1     5
+     0     7     8     1     7
+     0     7     2     5     2
+     2     4     1     7     2
+     9     7     3     4     0
+L*U
+ans =
+    2.0000    6.0000    9.0000    1.0000    5.0000
+         0    7.0000    8.0000    1.0000    7.0000
+         0    7.0000    2.0000    5.0000    2.0000
+    2.0000    4.0000    1.0000    7.0000    2.0000
+    9.0000    7.0000    3.0000    4.0000         0
+%insert above i.
+diary off
