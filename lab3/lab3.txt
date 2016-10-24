@@ -462,4 +462,118 @@ ans =
      1
 % ii. Since det(Q*H) = det(Q)*det(H), det(Q) being 1 tells us that det(Q*H) = det(H). 
 % ii. Physically, this tells us that the area of the house, when rotated, doesn't change. That is, the area of the house is constant.
+t = - pi/3
+t =
+   -1.0472
+Q = [cos(t), -sin(t); sin(t), cos(t)]
+Q =
+    0.5000    0.8660
+   -0.8660    0.5000
+plot2d(Q*H), pause on
+% i. The house still appears the same, but this time rotated about the origin -pi/3, thus causing it to be rotated to the right.
+det(Q)
+ans =
+     1
+% ii. The det(Q) is 1, thus the area of the house is still the same as it was before the rotation (see logic in previous ii.)
+plot2d(H), plot2d(Q*H); t = pi/6; Q = [cos(t), -sin(t); sin(t), cos(t)]; plot2d(Q*H)
+plot2d(H), plot2d(Q*H), t = pi/6, Q = [cos(t), -sin(t); sin(t), cos(t)], plot2d(Q*H)
+t =
+    0.5236
+Q =
+    0.8660   -0.5000
+    0.5000    0.8660
+% delete last two things
+plot2d(H)
+plot2d(Q*H)
+plot2d(H)
+plot2d(H), hold on
+plot2d(Q*H), hold on
+t = pi/6; Q = [cos(t), -sin(t); sin(t), cos(t)];
+plot2d(Q*H), hold on
+t = - pi/3
+t =
+   -1.0472
+Q = [cos(t), -sin(t); sin(t), cos(t)];
+plot2d(Q*H), hold on
+% clean this up to remove pi/6 calculation
+% Question 5 (b)
+r = .9; D = [r, 0; 0, 1/r ]
+D =
+    0.9000         0
+         0    1.1111
+plot2d(D*H)
+% delete last
+plot2d(H), hold on
+plot2d(D*H), hold on
+clear
+undo
+{Undefined function or variable 'undo'.} 
+load('matlab.mat')
+% undo until question 5 (b)
+r = .9; D = [r, 0; 0, 1/r ]
+D =
+    0.9000         0
+         0    1.1111
+plot2d(H), hold on
+plot2d(D*H)
+det(D)
+ans =
+     1
+r = .9; D = [r, 0; 0, 1/r ]
+D =
+    0.9000         0
+         0    1.1111
+r = .8; D = [r, 0; 0, 1/r ]
+D =
+    0.8000         0
+         0    1.2500
+plot2d(D*H)
+det(D)
+ans =
+     1
+% delete up to question 5 (b)
+r = .9; D = [r, 0; 0, 1/r ]
+D =
+    0.9000         0
+         0    1.1111
+plot2d(D*H)
+% i. The house has been stretched. That is, it is much taller but also thinner.
+% ii. Since det(D) = 1, the area of the house is still the same (det(D*H) = det(D)*det(H) = 1*det(H) = det(H)).
+r = .8; D = [r, 0; 0, 1/r ]
+D =
+    0.8000         0
+         0    1.2500
+plot2d(D*H)
+% i. The house is even thinner yet, and much taller than before.
+% ii. Since det(D) = 1, the area of the house is still the same (see aformentioned logic).
+% Question 5 (c)
+t = 1/2; T = [1, t; 0, 1]
+T =
+    1.0000    0.5000
+         0    1.0000
+plot2d(T*H)
+det(T)
+ans =
+     1
+det(H)
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('det')" style="font-weight:bold">det</a>
+Matrix must be square.} 
+% delete last
+det(T*H)
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('det')" style="font-weight:bold">det</a>
+Matrix must be square.} 
+T*H
+ans =
+   -9.5000   -5.0000   -6.5000    4.0000    7.5000    7.0000    2.5000   -6.5000   -4.0000   -1.0000   -3.5000   -9.5000
+   -7.0000    2.0000    1.0000    8.0000    1.0000    2.0000   -7.0000   -7.0000   -2.0000   -2.0000   -7.0000   -7.0000
+% remove last 2
+% i . The house is now skewed to the right. Instead of going straight up, it stretches towards the right.
+% ii. Since det(T) = 1, the area of the house hasn't changed.
+t = -1/2; T = [1, t; 0, 1]
+T =
+    1.0000   -0.5000
+         0    1.0000
+plot2d(T*H)
+% i . The house is now skewed to the left. Instead of going straight up, it stretches towards the left.
+% ii. Since det(T) = 1, the area of the house hasn't changed.
 diary off
