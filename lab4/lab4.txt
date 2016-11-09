@@ -413,3 +413,168 @@ b =
      4
      4
 diary off
+rand('seed', 3524)
+A=[0.30 0;0.14 0;0.56 1]
+
+A =
+
+    0.3000         0
+    0.1400         0
+    0.5600    1.0000
+
+B = [0.5 0 0;0.5 1 0.6;0 0 0.4]
+
+B =
+
+    0.5000         0         0
+    0.5000    1.0000    0.6000
+         0         0    0.4000
+
+C = [1 0.3 0;0 0.2 0;0 0.35 0.7;0 0.15 0.3]
+
+C =
+
+    1.0000    0.3000         0
+         0    0.2000         0
+         0    0.3500    0.7000
+         0    0.1500    0.3000
+
+M = C*B*A
+
+M =
+
+    0.3378    0.1800
+    0.1252    0.1200
+    0.3759    0.4900
+    0.1611    0.2100
+
+% Question 4 (a)
+x = 1000*rvect(2), y = A*x, z = B*y, w = C*z
+
+x =
+
+        4000
+        7000
+
+
+y =
+
+        1200
+         560
+        9240
+
+
+z =
+
+         600
+        6704
+        3696
+
+
+w =
+
+   1.0e+03 *
+
+    2.6112
+    1.3408
+    4.9336
+    2.1144
+
+[1 1]*x, [1 1 1]*y, [1 1 1]*z, [1 1 1 1]*w
+
+ans =
+
+       11000
+
+
+ans =
+
+       11000
+
+
+ans =
+
+       11000
+
+
+ans =
+
+       11000
+
+
+% This signifies that 11000 total cars exit each intersection through some various street.
+% The product of [1 1]*x signifies the total number of cars that enter the system.
+% Thus, naturally, it makes sense that for each intersection - y, z, and w - there are 11000 (or [1 1]*x) total cars that exit, since they all must leave once entering.
+% Question 5 (b)
+y = [270 126 704]'
+
+y =
+
+   270
+   126
+   704
+
+% Add this before question 5 (b)
+% For y, z, and w, each component of each vector describes the number of cars that exit through a specified exit.
+% Thus, for y(1,1), we see that 1200 cars exit through the first intersection, 560 through the second, and 9240 through the third.
+% Back to 5 (b)
+% A*x = y
+xp = partic(A, y)
+
+xp =
+
+   900
+   200
+
+A*xp
+
+ans =
+
+  270.0000
+  126.0000
+  704.0000
+
+N = nulbasis(A)
+NB: Null space = {0}.
+
+N =
+
+   Empty matrix: 2-by-0
+
+% Since the nullspace is 0, we find that there are no free variables (as otherwise it would be the span(free variables linear combo))
+% Thus, this is an unique solution
+% If the nulbasis of A yielded at least 1 row, we could form a general solution using it and any other random vector.
+% Question 5 (c)
+w = [100 200 300 400]’
+ w = [100 200 300 400]’
+                      
+{Error: The input character is not valid in MATLAB statements or expressions.
+} 
+w = [100 200 300 400]'
+
+w =
+
+   100
+   200
+   300
+   400
+
+% M*x = w
+xp = partic(M, w)
+
+xp =
+
+     []
+
+rref([M w])
+
+ans =
+
+     1     0     0
+     0     1     0
+     0     0     1
+     0     0     0
+
+% The solution isn't consistent, thus there is no particular vector x that yields W*x=w
+% that yields M*x = w
+diary off
