@@ -19,3 +19,38 @@ eigshow
 % i. No there are not
 % ii. No, as eigenvalues would yield x being on the same line as Ax for a given vector. Since there are no eigenvectors, there are no lines at which Ax and x are on the same line.
 diary off
+% Question 2 (a)
+A = [1 3; 4 2]/4
+A =
+    0.2500    0.7500
+    1.0000    0.5000
+syms t; I = eye(2); p = det(A - t*I)
+p =
+t^2 - (3*t)/4 - 5/8
+% delete below command v
+det(A)
+ans =
+   -0.6250
+5/8
+ans =
+    0.6250
+% delete above two commands ^
+% Question 2 (b)
+solve(p)
+ans =
+ -1/2
+  5/4
+% Question 2 (c)
+A = [3 1 ; -2 4 ]/4
+A =
+    0.7500    0.2500
+   -0.5000    1.0000
+syms t; I = eye(2); p = det(A - t*I)
+p =
+t^2 - (7*t)/4 + 7/8
+solve(p)
+ans =
+ 7/8 - (7^(1/2)*1i)/8
+ (7^(1/2)*1i)/8 + 7/8
+% The eigenvalues are not real. Since they're not real, we cannot observe geometrically the vectors x at which Ax and x are on the same line.
+diary off
