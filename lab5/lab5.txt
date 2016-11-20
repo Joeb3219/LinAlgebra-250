@@ -1,0 +1,21 @@
+% Joseph A. Boyle
+% 3524
+% Section C2
+% MATH 250 MATLAB Linear Algebra #5
+format compact
+% Question 1 (a)
+eigshow
+Make A*x parallel to x
+{Undefined function or variable 'Make'.} 
+% delete last two
+eigshow
+% i. 1
+% ii. 1
+% iii. ~-1/2, 3/4
+% Question 2 (b)
+% Question 1 (b)
+eigshow
+% remove eigshow above
+% i. No there are not
+% ii. No, as eigenvalues would yield x being on the same line as Ax for a given vector. Since there are no eigenvectors, there are no lines at which Ax and x are on the same line.
+diary off
