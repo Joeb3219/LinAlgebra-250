@@ -54,3 +54,101 @@ ans =
  (7^(1/2)*1i)/8 + 7/8
 % The eigenvalues are not real. Since they're not real, we cannot observe geometrically the vectors x at which Ax and x are on the same line.
 diary off
+% Question 3 (a)
+rand('seed', 3524)
+A = rmat(3,3), z = eig(A) - real(eig(A))
+A =
+     4     9     6
+     7     2     1
+     7     3     2
+z =
+     0
+     0
+     0
+syms t; I = eye(3); p = det(A - t*I)
+p =
+- t^3 + 8*t^2 + 88*t - 17
+figure; ezplot(p, [-10, 10]), grid
+figure; ezplot(p, [-10, 20]), grid
+% delete above
+figure; ezplot(p, [-10, 15]), grid
+% i. ~-6, ~0.3, ~14.2
+% Question 3 (b)
+[P D] = eig(A)
+P =
+    0.7171    0.7229    0.0274
+    0.4569   -0.5588   -0.5625
+    0.5264   -0.4063    0.8263
+D =
+   14.1389         0         0
+         0   -6.3289         0
+         0         0    0.1900
+% i. Very close, very good, much good guesses
+p1 = P(:,1), p2 = P(:,2), p3 = P(:,3)
+p1 =
+    0.7171
+    0.4569
+    0.5264
+p2 =
+    0.7229
+   -0.5588
+   -0.4063
+p3 =
+    0.0274
+   -0.5625
+    0.8263
+A*p1 - D(1,1)*p1, A*p2 - D(2,2)*p2, A*p3 - D(3,3)*p3
+ans =
+   1.0e-14 *
+         0
+   -0.2665
+   -0.3553
+ans =
+   1.0e-14 *
+    0.4441
+    0.1332
+   -0.1332
+ans =
+   1.0e-15 *
+   -0.8379
+   -0.6384
+   -0.7494
+% i. D(1,1) is the eigenvalue that correlates to the eigenvector at P(:,1), therefore A*P(:,1) = D(1,1)*P(:,1). This can be said for P(:,2) and D(2,2), and P(:,3) and D(3,3).
+% Since the eigenvector*A equals the eigenvector times its corresponding eigenvalue, subtracting them will yield zero.
+% Question 3 (c)
+P*D*inv(P)
+ans =
+    4.0000    9.0000    6.0000
+    7.0000    2.0000    1.0000
+    7.0000    3.0000    2.0000
+A
+A =
+     4     9     6
+     7     2     1
+     7     3     2
+% A^5 = P*D^5*P^-1
+% A^10 = P*D^10*P^-1
+P*D*D*D*D*D*inv(P)
+ans =
+   1.0e+05 *
+    2.8064    2.5618    1.6508
+    1.8593    1.5711    1.0078
+    2.1257    1.8245    1.1714
+A*A*A*A*A
+ans =
+      280639      256176      165075
+      185927      157106      100778
+      212569      182445      117143
+P*D*D*D*D*D*D*D*D*D*D*inv(P)
+ans =
+   1.0e+11 *
+    1.6148    1.4226    0.9148
+    1.0281    0.9070    0.5833
+    1.1848    1.0449    0.6720
+A*A*A*A*A*A*A*A*A*A
+ans =
+   1.0e+11 *
+    1.6148    1.4226    0.9148
+    1.0281    0.9070    0.5833
+    1.1848    1.0449    0.6720
+diary off
