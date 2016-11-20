@@ -152,3 +152,105 @@ ans =
     1.0281    0.9070    0.5833
     1.1848    1.0449    0.6720
 diary off
+% Question 4 (a)
+A = eye(2); B = rand(2);
+A(:,1) = B(:,1)/sum(B(:,1)); A(:,2) = B(:,2)/sum(B(:,2))
+A =
+    0.7859    0.0924
+    0.2141    0.9076
+[1 1]*A
+ans =
+     1     1
+% [1 1]*A essentially adds A(1,1)+A(2,1), which equals one, and A(1,2)+A(2,2), which equals one.
+% Since these each equal one, the sum of the columns are all one, and none are negative therefore transition matrix.
+% Question 4 (b)
+u = nulbasis(A - eye(2)), v = u/sum(u)
+u =
+    0.4317
+    1.0000
+v =
+    0.3015
+    0.6985
+A*v
+ans =
+    0.3015
+    0.6985
+figure; plot([0,v(1)], [0, v(2)]), hold on
+% Question 4 (c)
+w = rand(2,1), p = w/sum(w)
+w =
+    0.6524
+    0.8811
+p =
+    0.4254
+    0.5746
+p = A*p, plot([0,p(1)], [0, p(2)], ’:’), hold on
+ p = A*p, plot([0,p(1)], [0, p(2)], ’:’), hold on
+                                    
+{Error: The input character is not valid in MATLAB statements or expressions.
+} 
+p = A*p, plot([0,p(1)], [0, p(2)], ':'), hold on
+p =
+    0.3875
+    0.6125
+p = A*p, plot([0,p(1)], [0, p(2)], ':'), hold on
+p =
+    0.3611
+    0.6389
+p = A*p, plot([0,p(1)], [0, p(2)], ':'), hold on
+p =
+    0.3429
+    0.6571
+p = A*p, plot([0,p(1)], [0, p(2)], ':'), hold on
+p =
+    0.3302
+    0.6698
+p = A*p, plot([0,p(1)], [0, p(2)], ':'), hold on
+p =
+    0.3214
+    0.6786
+p = A*p, plot([0,p(1)], [0, p(2)], ':'), hold on
+p =
+    0.3153
+    0.6847
+p = A*p, plot([0,p(1)], [0, p(2)], ':'), hold on
+p =
+    0.3111
+    0.6889
+p = A*p, plot([0,p(1)], [0, p(2)], ':'), hold on
+p =
+    0.3082
+    0.6918
+p = A*p, plot([0,p(1)], [0, p(2)], ':'), hold on
+p =
+    0.3061
+    0.6939
+p = A*p, plot([0,p(1)], [0, p(2)], ':'), hold on
+p =
+    0.3047
+    0.6953
+p = A*p, plot([0,p(1)], [0, p(2)], ':'), hold on
+p =
+    0.3038
+    0.6962
+p = A*p, plot([0,p(1)], [0, p(2)], ':'), hold on
+p =
+    0.3031
+    0.6969
+p = A*p, plot([0,p(1)], [0, p(2)], ':'), hold on
+p =
+    0.3026
+    0.6974
+p = A*p, plot([0,p(1)], [0, p(2)], ':'), hold on
+p =
+    0.3023
+    0.6977
+p = A*p, plot([0,p(1)], [0, p(2)], ':'), hold on
+p =
+    0.3021
+    0.6979
+p = A*p, plot([0,p(1)], [0, p(2)], ':'), hold on
+p =
+    0.3019
+    0.6981
+diary off
