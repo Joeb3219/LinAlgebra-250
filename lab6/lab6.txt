@@ -133,3 +133,65 @@ ans =
 % These 3 vectors are not mutually orthogonal since they do not form 90 degree angles.
 % Question 2 (b)
 diary off
+v1 = u1
+v1 =
+     2
+     5
+     1
+P1 = v1*inv(v1'*v1)*v1', v2 = u2 - P1*u2
+P1 =
+    0.1333    0.3333    0.0667
+    0.3333    0.8333    0.1667
+    0.0667    0.1667    0.0333
+v2 =
+   -2.7333
+    0.1667
+    4.6333
+v1'*v2
+ans =
+   2.6645e-15
+plot3(r*v2(1),r*v2(2),r*v2(3), ’g-.’)
+ plot3(r*v2(1),r*v2(2),r*v2(3), ’g-.’)
+                                
+{Error: The input character is not valid in MATLAB statements or expressions.
+} 
+plot3(r*v2(1),r*v2(2),r*v2(3), 'g-.')
+P2 = v2*inv(v2'*v2)*v2', v3 = u3 - P1*u3 - P2*u3
+P2 =
+    0.2579   -0.0157   -0.4372
+   -0.0157    0.0010    0.0267
+   -0.4372    0.0267    0.7411
+v3 =
+    4.9758
+   -2.5961
+    3.0288
+v3'*v2
+ans =
+  -8.8818e-15
+v3'*v1
+ans =
+  -4.4409e-16
+plot3(r*v3(1),r*v3(2),r*v3(3), 'b-.')
+% Question 2 (c)
+w1 = v1/norm(v1), w2 = v2/norm(v2), w3 = v3/norm(v3)
+w1 =
+    0.3651
+    0.9129
+    0.1826
+w2 =
+   -0.5079
+    0.0310
+    0.8609
+w3 =
+    0.7802
+   -0.4071
+    0.4749
+Q = [w1, w2, w3]
+Q =
+    0.3651   -0.5079    0.7802
+    0.9129    0.0310   -0.4071
+    0.1826    0.8609    0.4749
+
+% Do this and question 2 (d)
+% Question 3 (a)
+diary off
