@@ -1,0 +1,135 @@
+% Joseph A. Boyle
+% 3524
+% Section C2
+% MATLAB Assignement #6
+rand('seed', 3524)
+u = rvect(2), v = rvect(2)
+
+u =
+
+     4
+     7
+
+
+v =
+
+     7
+     9
+
+% remove last command (up to rand)
+format compact
+u = rvect(2), v = rvect(2)
+u =
+     2
+     3
+v =
+     6
+     1
+rank([u, v])
+ans =
+     2
+% Question 1 (a)
+% The sum of ||u|| and ||v|| will be greater than or equal to ||u + v||
+% That is, the quantity of the length of u plus the length of v will be greater than or equal to the length of u plus v.
+norm(u) + norm(v), norm(u + v)
+ans =
+    9.6883
+ans =
+    8.9443
+% Question 1 (b)
+|u*v| is less than or equal to ||u|| ||v||
+ |u*v| is less than or equal to ||u|| ||v||
+ 
+{Error: Unexpected MATLAB operator.
+} 
+% |u*v| is less than or equal to ||u|| ||v||
+% The absolute value of the dot product of u and v is less than or equal to the product of the length of u times the length of v.
+u'*v, norm(u)+norm(v)
+ans =
+    15
+ans =
+    9.6883
+% delete above instruction
+u'*v, norm(u)*norm(v)
+ans =
+    15
+ans =
+   21.9317
+% delete above instruction
+abst(u'*v), norm(u)*norm(v)
+{Undefined function or variable 'abst'.} 
+abs(u'*v), norm(u)*norm(v)
+ans =
+    15
+ans =
+   21.9317
+% Question 1 (c)
+w = ((u'*v)/(norm(v)*norm(v)))*v
+w =
+    2.4324
+    0.4054
+z = u - w
+z =
+   -0.4324
+    2.5946
+u
+u =
+     2
+     3
+% delete everything up to 1(c)
+w = ((u'*v)/(norm(v)*norm(v)))*v
+w =
+    2.4324
+    0.4054
+z = u - w
+z =
+   -0.4324
+    2.5946
+z'*v
+ans =
+  -5.7732e-15
+% Question 1 (d)
+P = v*inv(v'*v)*v'
+P =
+    0.9730    0.1622
+    0.1622    0.0270
+P*u
+ans =
+    2.4324
+    0.4054
+% Why is P 2x2? DO THE THING JOE
+% Question 2 (a)
+u1 = rvect(3), u2 = rvect(3), u3 = rvect(3)
+u1 =
+     2
+     5
+     1
+u2 =
+     0
+     7
+     6
+u3 =
+     8
+     9
+     8
+rank([u1, u2, u3])
+ans =
+     3
+
+r = 0:0.05:1; hold on
+plot3(r*u1(1),r*u1(2),r*u1(3), 'r:')
+plot3(r*u2(1),r*u2(2),r*u2(3), 'g:')
+plot3(r*u3(1),r*u3(2),r*u3(3), 'b:')
+u1'*u2
+ans =
+    41
+u2'*u3
+ans =
+   111
+u3'*u1
+ans =
+    69
+% Delete last 3
+% These 3 vectors are not mutually orthogonal since they do not form 90 degree angles.
+% Question 2 (b)
+diary off
