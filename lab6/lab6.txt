@@ -195,3 +195,114 @@ Q =
 % Do this and question 2 (d)
 % Question 3 (a)
 diary off
+a1 = rvect(5); a2 = rvect(5); a3 = rvect(5); A = [a1, a2, a3]
+A =
+     3     5     4
+     9     4     8
+     8     1     2
+     5     5     6
+     7     0     4
+rank(A)
+ans =
+     3
+W= Col(A) 
+{Undefined function or variable 'Col'.} 
+W = Col(A)
+{Undefined function or variable 'Col'.} 
+W = colspace(A)
+{Undefined function 'colspace' for input arguments of type 'double'.} 
+Q = grams(A); w1 = Q(:,1), w2 = Q(:,2), w3 = Q(:,3)
+w1 =
+    0.1987
+    0.5960
+    0.5298
+    0.3311
+    0.4636
+w2 =
+    0.6486
+    0.1140
+   -0.3243
+    0.5259
+   -0.4295
+w3 =
+   -0.3047
+    0.4486
+   -0.7576
+    0.0973
+    0.3501
+Q’*Q
+ Q’*Q
+  
+{Error: The input character is not valid in MATLAB statements or expressions.
+} 
+Q'*Q
+ans =
+    1.0000    0.0000   -0.0000
+    0.0000    1.0000    0.0000
+   -0.0000    0.0000    1.0000
+% delete below
+Q', inv(Q)
+ans =
+    0.1987    0.5960    0.5298    0.3311    0.4636
+    0.6486    0.1140   -0.3243    0.5259   -0.4295
+   -0.3047    0.4486   -0.7576    0.0973    0.3501
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('inv')" style="font-weight:bold">inv</a>
+Matrix must be square.} 
+% delete bove
+% Since Q'*Q yields the Identity Matrix, we know that Q is an orthogonal matrix
+% Since Q is an orthogonal matrix, its columns form an orthonormal basis.
+% For w1, w2, and w3 to form an orthonormal basis, they must all be orthonormal to one another.
+% Question 3 (b)
+P = w1*w1' + w2*w2' + w3*w3'
+P =
+    0.5530    0.0557    0.1257    0.3773   -0.2931
+    0.0557    0.5695   -0.0610    0.3009    0.3844
+    0.1257   -0.0610    0.9598   -0.0688    0.1197
+    0.3773    0.3009   -0.0688    0.3957   -0.0383
+   -0.2931    0.3844    0.1197   -0.0383    0.5219
+v = rvect(5)
+v =
+     7
+     5
+     0
+     6
+     5
+w
+w =
+    2.4324
+    0.4054
+=
+ =
+ 
+{Error: The expression to the left of the equals sign is not a valid target for an assignment.
+} 
+% delete up to v = 
+w=P*v, z=v-w
+w =
+    4.9476
+    6.9649
+    0.7603
+    6.3284
+    2.2498
+z =
+    2.0524
+   -1.9649
+   -0.7603
+   -0.3284
+    2.7502
+P*w, P*z
+ans =
+    4.9476
+    6.9649
+    0.7603
+    6.3284
+    2.2498
+ans =
+   1.0e-14 *
+   -0.1776
+    0.1776
+   -0.1665
+   -0.0194
+    0.2442
+% Question 3 (c)
+diary off
